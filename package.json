@@ -1,7 +1,7 @@
 {
   "type": "module",
   "author": "Fusebit",
-  "name": "fusetunnel-server",
+  "name": "@fusebit/tunnel-server",
   "description": "Expose localhost to the world",
   "version": "1.0.0",
   "license": "MIT",
