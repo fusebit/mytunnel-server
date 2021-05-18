@@ -9,7 +9,7 @@ import pemPromise from 'pem-promise';
 import CreateServer from '../server.js';
 import fs from 'fs';
 import axios from 'axios';
-const debug = Debug('mytunnel');
+const debug = Debug('fusetunnel');
 
 const argv = optimist
     .usage('Usage: $0 --port [num]')
