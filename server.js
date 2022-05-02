@@ -27,6 +27,12 @@ export default function(opt) {
     const router = new Router();
 
     router.get('/api/status', async (ctx, next) => {
+        if (opt.secret) {
+            if (ctx.headers.authorization !== opt.secret) {
+                ctx.res.statusCode = 401
+                ctx.res.statusMessage = 'UNAUTHORIZED'
+            }
+        }
         ctx.body = {
             tunnelsCount: manager.stats.tunnels,
             tunnels: manager.getClients(),
@@ -35,6 +41,12 @@ export default function(opt) {
     });
 
     router.get('/api/tunnels/:id/status', async (ctx, next) => {
+        if (opt.secret) {
+            if (ctx.headers.authorization !== opt.secret) {
+                ctx.res.statusCode = 401
+                ctx.res.statusMessage = 'UNAUTHORIZED'
+            }
+        }
         const clientId = ctx.params.id;
         const client = manager.getClient(clientId);
         if (!client) {
