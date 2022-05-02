@@ -31,6 +31,7 @@ export default function(opt) {
             if (ctx.headers.authorization !== opt.secret) {
                 ctx.res.statusCode = 401
                 ctx.res.statusMessage = 'UNAUTHORIZED'
+                return;
             }
         }
         ctx.body = {
@@ -45,6 +46,7 @@ export default function(opt) {
             if (ctx.headers.authorization !== opt.secret) {
                 ctx.res.statusCode = 401
                 ctx.res.statusMessage = 'UNAUTHORIZED'
+                return;
             }
         }
         const clientId = ctx.params.id;
