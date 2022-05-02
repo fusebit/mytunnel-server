@@ -29,9 +29,7 @@ export default function(opt) {
     router.get('/api/status', async (ctx, next) => {
         if (opt.secret) {
             if (ctx.headers.authorization !== opt.secret) {
-                ctx.res.statusCode = 401
-                ctx.res.statusMessage = 'UNAUTHORIZED'
-                return;
+                ctx.throw(401)
             }
         }
         ctx.body = {
@@ -44,9 +42,7 @@ export default function(opt) {
     router.get('/api/tunnels/:id/status', async (ctx, next) => {
         if (opt.secret) {
             if (ctx.headers.authorization !== opt.secret) {
-                ctx.res.statusCode = 401
-                ctx.res.statusMessage = 'UNAUTHORIZED'
-                return;
+                ctx.throw(401)
             }
         }
         const clientId = ctx.params.id;
@@ -80,9 +76,7 @@ export default function(opt) {
             if (opt.secret) {
                 const token = ctx.req.headers["authorization"];
                 if (opt.secret !== token) {
-                    ctx.res.statusCode = 401;
-                    ctx.res.statusMessage = "UNAUTHORIZED";
-                    return;
+                    ctx.throw(401)
                 }
             }
             const reqId = hri.random();
