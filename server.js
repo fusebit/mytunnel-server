@@ -29,7 +29,7 @@ export default function(opt) {
     router.get('/api/status', async (ctx, next) => {
         if (opt.secret) {
             if (ctx.headers.authorization !== opt.secret) {
-                ctx.throw(401)
+                ctx.throw(401);
             }
         }
         ctx.body = {
@@ -42,7 +42,7 @@ export default function(opt) {
     router.get('/api/tunnels/:id/status', async (ctx, next) => {
         if (opt.secret) {
             if (ctx.headers.authorization !== opt.secret) {
-                ctx.throw(401)
+                ctx.throw(401);
             }
         }
         const clientId = ctx.params.id;
