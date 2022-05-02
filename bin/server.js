@@ -62,6 +62,10 @@ const argv = optimist
     .options('auto-discover-tunnel-ip', {
         describe: 'automatically descover the tunnel public ip via the AWS checkip endpoint'
     })
+    .options("secret", {
+        describe:
+          "the secret that clients need to pass to open a tunnel connection with the server",
+    })
     .argv;
 
 if (argv.help) {
@@ -98,7 +102,8 @@ const server = CreateServer({
     webcert: argv['web-cert'],
     webkey: argv['web-key'],
     webca: argv['web-ca'],
-    OverrideTunnelIp: argv['override-tunnel-ip']
+    OverrideTunnelIp: argv['override-tunnel-ip'],
+    secret: argv.secret,
 });
 
 server.listen(argv.port, argv.address, () => {

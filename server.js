@@ -63,6 +63,14 @@ export default function(opt) {
 
         const isNewClientRequest = ctx.query['new'] !== undefined;
         if (isNewClientRequest) {
+            if (opt.secret) {
+                const token = ctx.req.headers["authorization"];
+                if (opt.secret !== token) {
+                    ctx.res.statusCode = 401;
+                    ctx.res.statusMessage = "UNAUTHORIZED";
+                    return;
+                }
+            }
             const reqId = hri.random();
             debug('making new client with id %s', reqId);
             const info = await manager.newClient(reqId);
