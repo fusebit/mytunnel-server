@@ -13,7 +13,7 @@
     "url": "git://github.com/fusebit/tunnel-server.git"
   },
   "dependencies": {
-    "axios": "0.21.1",
+    "axios": "0.27.2",
     "book": "1.3.3",
     "debug": "3.1.0",
     "esm": "3.2.25",
@@ -28,10 +28,10 @@
     "tldjs": "2.3.1"
   },
   "devDependencies": {
-    "mocha": "^8.3.0",
+    "mocha": "10.0.0",
     "nodemon": "2.0.7",
     "supertest": "3.1.0",
-    "ws": "5.1.1"
+    "ws": "8.6.0"
   },
   "bin": {
     "ft-server": "bin/server.js"
